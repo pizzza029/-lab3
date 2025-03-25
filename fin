@@ -1,0 +1,81 @@
+/**
+ * Description: This is a game that works by getting a random number and having you guess what it is.
+ * @author Erick Espinoza, Irene Chen
+ * @since 10/22/2024
+ */
+import java.util.Scanner;
+
+public class Main {
+
+    /**
+     * Description: This method handles the number guessing game logic.
+     */
+    public static void numges() {
+        Scanner input = new Scanner(System.in);
+        int target = (int) (Math.random() * 101);
+        int tries = 5;
+        boolean continueGame = true;
+
+        System.out.println("This is a guessing game.\n" +
+                "I'm thinking of a number between 1 and 100. Guess what it is:");
+
+        while (continueGame) {
+            for (int i = 0; i < tries; i++) {
+                int number = input.nextInt();
+
+                if (number > target) {
+                    System.out.println("Too high, try again.");
+                } else if (number < target) {
+                    System.out.println("Too low, try again.");
+                } else {
+                    System.out.println("You got it!");
+                    break;
+                }
+            }
+
+            input.nextLine(); // Clear buffer
+            System.out.println("the number i was thinking of was "+ target);
+            System.out.print("Do you want to play again? (yes or no): ");
+            if (input.nextLine().equalsIgnoreCase("no")) {
+                continueGame = false;
+            }
+        }
+    }
+
+    /**
+     * Description: This method displays the menu and handles user choices.
+     */
+    public static void menu() {
+        Scanner input = new Scanner(System.in);
+        boolean exit = false;
+
+        while (!exit) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Play Number Guessing Game");
+            System.out.println("2. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = input.nextInt();
+            input.nextLine(); // Clear buffer
+
+            switch (choice) {
+                case 1:
+                    numges();
+                    break;
+                case 2:
+                    System.out.println("Thanks for playing!");
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    /**
+     * Description: Main method - Entry point of the program.
+     */
+    public static void main(String[] args) {
+        menu();
+    }
+}
