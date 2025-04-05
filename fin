@@ -1,6 +1,6 @@
 /**
  * Description: This is a game that works by getting a random number and having you guess what it is.
- * @author Erick Espinoza, Irene Chen
+ * @author Erick Espinoza, 
  * @since 10/22/2024
  */
 import java.util.Scanner;
